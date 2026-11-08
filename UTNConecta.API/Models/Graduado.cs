@@ -9,6 +9,7 @@
         public string Contrasena { get; set; } = string.Empty;
         public int IdCarrera { get; set; }
         public int AnioGraduacion { get; set; }
+        public string? CvUrl { get; set; }
 
         // Navegación
         public Carrera Carrera { get; set; } = null!;

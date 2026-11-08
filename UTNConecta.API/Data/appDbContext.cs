@@ -21,6 +21,8 @@ namespace UTNConecta.API.Data
             modelBuilder.Entity<Carrera>().Property(c => c.Id).HasColumnName("id");
             modelBuilder.Entity<Carrera>().Property(c => c.Nombre).HasColumnName("nombre");
             modelBuilder.Entity<Carrera>().Property(c => c.Area).HasColumnName("area");
+            modelBuilder.Entity<Graduado>().HasIndex(g => g.Email).IsUnique();
+            modelBuilder.Entity<Organizacion>().HasIndex(o => o.Email).IsUnique();
 
             modelBuilder.Entity<Habilidad>().ToTable("habilidad");
             modelBuilder.Entity<Habilidad>().Property(h => h.Id).HasColumnName("id");

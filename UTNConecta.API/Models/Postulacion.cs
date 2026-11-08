@@ -1,16 +1,15 @@
-﻿namespace UTNConecta.API.Models{
-    public class Postulacion { 
-    
+﻿namespace UTNConecta.API.Models
+{
+    public class Postulacion
+    {
         public int Id { get; set; }
-        public int IdGraduado { get; set; }
-        public int IdOportunidad { get; set; }
-        public DateTime Fecha { get; set; } = DateTime.Today;
+        public int GraduadoId { get; set; }
+        public int OportunidadId { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.UtcNow;
         public string Estado { get; set; } = "pendiente";
 
-        //Navegacion
+        // Navegacion
         public Graduado Graduado { get; set; } = null!;
         public Oportunidad Oportunidad { get; set; } = null!;
-
-
     }
 }
