@@ -34,23 +34,34 @@ namespace UTNConecta.API.Services
             return MapearDto(oportunidad, "");
         }
 
-        public async Task<List<OportunidadDto>> ListarAsync(string? tipo, string? area)
+        public async Task<List<OportunidadDto>> ListarAsync(string? tipo, string? area, string? modalidad)
         {
             var query = _context.Oportunidades
                 .Include(o => o.Organizacion)
                 .Where(o => o.Estado == "activa");
 
-            if (!string.IsNullOrEmpty(tipo))
-                query = query.Where(o => o.Tipo == tipo);
+            if (!string.IsNullOrWhiteSpace(tipo))
+            {
+                var t = tipo.Trim().ToLower();
+                query = query.Where(o => o.Tipo.ToLower() == t);
+            }
 
-            if (!string.IsNullOrEmpty(area))
-                query = query.Where(o => o.AreaProfesional == area);
+            if (!string.IsNullOrWhiteSpace(area))
+            {
+                var a = area.Trim().ToLower();
+                query = query.Where(o => o.AreaProfesional.ToLower().Contains(a));
+            }
+
+            if (!string.IsNullOrWhiteSpace(modalidad))
+            {
+                var m = modalidad.Trim().ToLower();
+                query = query.Where(o => o.Modalidad.ToLower() == m);
+            }
 
             var lista = await query.ToListAsync();
 
             return lista.Select(o => MapearDto(o, o.Organizacion?.Nombre ?? "")).ToList();
         }
-
 
         public async Task<List<OportunidadDto>> ListarPorOrganizacionAsync(int organizacionId)
         {
@@ -62,8 +73,6 @@ namespace UTNConecta.API.Services
 
             return lista.Select(o => MapearDto(o, o.Organizacion?.Nombre ?? "")).ToList();
         }
-
-
 
         public async Task<OportunidadDto?> ObtenerPorIdAsync(int id)
         {

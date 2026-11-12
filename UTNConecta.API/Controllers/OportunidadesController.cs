@@ -19,9 +19,9 @@ namespace UTNConecta.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Listar([FromQuery] string? tipo, [FromQuery] string? area)
+        public async Task<IActionResult> Listar([FromQuery] string? tipo, [FromQuery] string? area, [FromQuery] string? modalidad)
         {
-            var lista = await _service.ListarAsync(tipo, area);
+            var lista = await _service.ListarAsync(tipo, area, modalidad);
             return Ok(lista);
         }
 
