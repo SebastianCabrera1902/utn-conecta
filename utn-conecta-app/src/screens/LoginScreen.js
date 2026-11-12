@@ -14,8 +14,7 @@ export default function LoginScreen({ navigation }) {
       const res = await fetch(`${API_URL}/${ruta}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, contrasena }),
-      });
+        body:JSON.stringify({email:email.trim(), contrasena }),});
 
       if (!res.ok) {
         Alert.alert('Error', 'Email o contraseña incorrectos');
@@ -59,11 +58,12 @@ export default function LoginScreen({ navigation }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-        keyboardType="email-address"
+      placeholder="Email"
+      value={email}
+      onChangeText={setEmail}
+      autoCapitalize="none"
+      autoCorrect={false}
+      keyboardType="email-address"
       />
       <TextInput
         style={styles.input}
