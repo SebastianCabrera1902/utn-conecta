@@ -5,10 +5,10 @@ Aplicación móvil que conecta a graduados de la UTN con oportunidades laborales
 Proyecto integrador de la Tecnicatura Universitaria en Programación (UTN FRT).
 
 <p align="center">
-  <img src="docs/capturas/login.png" width="200" />
-  <img src="docs/capturas/oportunidades.png" width="200" />
-  <img src="docs/capturas/detalle.png" width="200" />
-  <img src="docs/capturas/postulantes.png" width="200" />
+  <img src="docs/capturas/login.jpg" width="200" />
+  <img src="docs/capturas/oportunidades.jpg" width="200" />
+  <img src="docs/capturas/detalle.jpg" width="200" />
+  <img src="docs/capturas/postulantes.jpg" width="200" />
 </p>
 
 ## El problema
